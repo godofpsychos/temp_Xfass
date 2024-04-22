@@ -1,0 +1,22 @@
+For workflow:	IBMParallelSimulator12
+	 InstanceId:	f93f6c87acd74da89a34eb1cbebc82a8
+		Total workflow execution time:	838.809 seconds
+		Total funtion exec time(as per critical path):	405.995 seconds
+		Total waiting time(as per critical path):	432.81399999999996 seconds
+		Critical Path:	Splitter->Transpiler7->Simulator7->Reconstructor->CollectLogs->
+		Total Cost: 	$ 0.001851250046508789
+
+
+For each path total execution time and total waiting time
+Path:Splitter->Transpiler0->Simulator0->Reconstructor->CollectLogs->	Total exec time:19.087 sec	Total waiting time:819.722 sec
+Path:Splitter->Transpiler1->Simulator1->Reconstructor->CollectLogs->	Total exec time:374.444 sec	Total waiting time:464.36499999999995 sec
+Path:Splitter->Transpiler2->Simulator2->Reconstructor->CollectLogs->	Total exec time:13.935 sec	Total waiting time:824.874 sec
+Path:Splitter->Transpiler3->Simulator3->Reconstructor->CollectLogs->	Total exec time:365.891 sec	Total waiting time:472.91799999999995 sec
+Path:Splitter->Transpiler4->Simulator4->Reconstructor->CollectLogs->	Total exec time:350.829 sec	Total waiting time:487.97999999999996 sec
+Path:Splitter->Transpiler5->Simulator5->Reconstructor->CollectLogs->	Total exec time:375.312 sec	Total waiting time:463.49699999999996 sec
+Path:Splitter->Transpiler6->Simulator6->Reconstructor->CollectLogs->	Total exec time:390.306 sec	Total waiting time:448.503 sec
+Path:Splitter->Transpiler7->Simulator7->Reconstructor->CollectLogs->	Total exec time:405.995 sec	Total waiting time:432.81399999999996 sec
+Path:Splitter->Transpiler8->Simulator8->Reconstructor->CollectLogs->	Total exec time:390.466 sec	Total waiting time:448.34299999999996 sec
+Path:Splitter->Transpiler9->Simulator9->Reconstructor->CollectLogs->	Total exec time:387.808 sec	Total waiting time:451.001 sec
+Path:Splitter->Transpiler10->Simulator10->Reconstructor->CollectLogs->	Total exec time:357.278 sec	Total waiting time:481.53099999999995 sec
+Path:Splitter->Transpiler11->Simulator11->Reconstructor->CollectLogs->	Total exec time:300.883 sec	Total waiting time:537.9259999999999 sec

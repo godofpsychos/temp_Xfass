@@ -1,0 +1,98 @@
+{
+    "WorkflowName": "IBMParallelSimulator",
+    "Nodes": [
+        {
+            "NodeId": "1",
+            "NodeName": "Splitter",
+            "Path": "examples/ParallelSimulator1/Splitter",
+            "EntryPoint": "Splitter.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "2",
+            "NodeName": "Transpiler0",
+            "Path": "examples/ParallelSimulator1/Transpiler0",
+            "EntryPoint": "Transpiler.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "3",
+            "NodeName": "Transpiler1",
+            "Path": "examples/ParallelSimulator1/Transpiler1",
+            "EntryPoint": "Transpiler.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "4",
+            "NodeName": "Simulator0",
+            "Path": "examples/ParallelSimulator1/Simulator",
+            "EntryPoint": "Simulator.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "5",
+            "NodeName": "Simulator1",
+            "Path": "examples/ParallelSimulator1/Simulator",
+            "EntryPoint": "Simulator.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "6",
+            "NodeName": "Reconstructor",
+            "Path": "examples/ParallelSimulator1/Reconstructor",
+            "EntryPoint": "Reconstructor.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "253",
+            "NodeName": "CollectLogs",
+            "Path": "/home/tarun/XFaaS/serwo/examples/ParallelSimulator1//CollectLogs",
+            "EntryPoint": "func.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        }
+    ],
+    "Edges": [
+        {
+            "Splitter": [
+                "Transpiler0"
+            ]
+        },
+        {
+            "Splitter": [
+                "Transpiler1"
+            ]
+        },
+        {
+            "Transpiler0": [
+                "Simulator0"
+            ]
+        },
+        {
+            "Transpiler1": [
+                "Simulator1"
+            ]
+        },
+        {
+            "Simulator0": [
+                "Reconstructor"
+            ]
+        },
+        {
+            "Simulator1": [
+                "Reconstructor"
+            ]
+        },
+        {
+            "Reconstructor": [
+                "CollectLogs"
+            ]
+        }
+    ]
+}

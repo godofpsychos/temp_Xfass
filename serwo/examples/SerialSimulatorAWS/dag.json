@@ -1,0 +1,60 @@
+{
+  "WorkflowName": "AWSSimulatorSerial",
+  "Nodes": 
+  [
+    {
+      "NodeId": "1",
+      "NodeName": "Splitter",
+      "Path": "examples/SerialSimulatorAWS/Splitter",
+      "EntryPoint": "app.py",
+      "CSP": "NA",
+      "MemoryInMB": 3072,
+      "IsAsync": false
+    },
+    {
+      "NodeId": "2",
+      "NodeName": "Transpiler",
+      "Path": "examples/SerialSimulatorAWS/Transpiler",
+      "EntryPoint": "app.py",
+      "CSP": "NA",
+      "MemoryInMB": 3072,
+      "IsAsync": false
+    },
+    {
+      "NodeId": "3",
+      "NodeName": "Simulator",
+      "Path": "examples/SerialSimulatorAWS/Simulator",
+      "EntryPoint": "app.py",
+      "CSP": "NA",
+      "MemoryInMB": 3072,
+      "IsAsync": false
+    },
+    {
+      "NodeId": "4",
+      "NodeName": "Reconstructor",
+      "Path": "examples/SerialSimulatorAWS/Reconstructor",
+      "EntryPoint": "app.py",
+      "CSP": "NA",
+      "MemoryInMB": 3072,
+      "IsAsync": false
+    }
+  ],
+  "Edges": [
+    {
+        "Splitter": [
+            "Transpiler"
+        ]
+    },
+    {
+        "Transpiler": [
+            "Simulator"
+        ]
+    },
+    {
+        "Simulator": [
+            "Reconstructor"
+        ]
+    }
+]
+}
+

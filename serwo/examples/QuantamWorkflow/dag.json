@@ -1,0 +1,58 @@
+{
+    "WorkflowName": "QuantamWorkflowDemo",
+    "Nodes": 
+    [
+      {
+        "NodeId": "1",
+        "NodeName": "InvokeAndCircuitSplit",
+        "Path": "examples/QuantamWorkflow/Invoke",
+        "EntryPoint": "Invoke.py",
+        "CSP": "NA",
+        "MemoryInMB": 128
+      },
+      {
+        "NodeId": "2",
+        "NodeName": "SubmitCircuits",
+        "Path": "examples/QuantamWorkflow/Submit",
+        "EntryPoint": "Submit.py",
+        "CSP": "NA",
+        "MemoryInMB": 128,
+        "IsAsync": true
+      },
+      {
+        "NodeId": "3",
+        "NodeName": "WaitFn",
+        "Path": "examples/QuantamWorkflow/Sleep",
+        "EntryPoint": "Sleep.py",
+        "CSP": "NA",
+        "MemoryInMB": 128,
+        "IsAsync": false
+      },
+      {
+        "NodeId": "4",
+        "NodeName": "Poll",
+        "Path": "examples/QuantamWorkflow/Poll",
+        "EntryPoint": "Poll.py",
+        "CSP": "NA",
+        "MemoryInMB": 128
+      }
+    ],
+    "Edges": [
+      {
+          "InvokeAndCircuitSplit": [
+              "SubmitCircuits"
+          ]
+      },
+      {
+          "SubmitCircuits": [
+              "WaitFn"
+          ]
+      },
+      {
+        "WaitFn": [
+            "Poll"
+        ]
+    }
+  ]
+}
+  

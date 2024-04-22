@@ -1,0 +1,82 @@
+{
+    "WorkflowName": "IBMSerialHardware",
+    "Nodes": [
+        {
+            "NodeId": "1",
+            "NodeName": "Splitter",
+            "Path": "examples/SerialHardware/Splitter",
+            "EntryPoint": "Splitter.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "2",
+            "NodeName": "Transpiler",
+            "Path": "examples/SerialHardware/Transpiler",
+            "EntryPoint": "Transpiler.py",
+            "CSP": "NA",
+            "MemoryInMB": 128,
+            "IsAsync": false
+        },
+        {
+            "NodeId": "3",
+            "NodeName": "Submitter",
+            "Path": "examples/SerialHardware/Submitter",
+            "EntryPoint": "Submitter.py",
+            "CSP": "NA",
+            "MemoryInMB": 128,
+            "IsAsync": true
+        },
+        {
+            "NodeId": "4",
+            "NodeName": "Poller",
+            "Path": "examples/SerialHardware/Poller",
+            "EntryPoint": "Poller.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "5",
+            "NodeName": "Reconstructor",
+            "Path": "examples/SerialHardware/Reconstructor",
+            "EntryPoint": "Reconstructor.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "253",
+            "NodeName": "CollectLogs",
+            "Path": "/home/tarun/XFaaS/serwo/examples/SerialHardware//CollectLogs",
+            "EntryPoint": "func.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        }
+    ],
+    "Edges": [
+        {
+            "Splitter": [
+                "Transpiler"
+            ]
+        },
+        {
+            "Transpiler": [
+                "Submitter"
+            ]
+        },
+        {
+            "Submitter": [
+                "Poller"
+            ]
+        },
+        {
+            "Poller": [
+                "Reconstructor"
+            ]
+        },
+        {
+            "Reconstructor": [
+                "CollectLogs"
+            ]
+        }
+    ]
+}

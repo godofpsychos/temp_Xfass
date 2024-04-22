@@ -1,0 +1,30 @@
+{
+    "WorkflowName": "CheckPoll",
+    "Nodes": 
+    [
+      {
+        "NodeId": "1",
+        "NodeName": "Invoke",
+        "Path": "examples/PollTest/Invoke",
+        "EntryPoint": "app.py",
+        "CSP": "NA",
+        "MemoryInMB": 128,
+        "IsAsync": true
+      },
+      {
+        "NodeId": "2",
+        "NodeName": "Poll",
+        "Path": "examples/PollTest/Poll",
+        "EntryPoint": "app.py",
+        "CSP": "NA",
+        "MemoryInMB": 128
+      }
+    ],
+    "Edges": [
+      {
+        "Invoke": ["Poll"]
+      }
+    ]
+  }
+  
+

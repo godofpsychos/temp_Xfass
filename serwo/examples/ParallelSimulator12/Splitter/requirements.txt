@@ -1,0 +1,2 @@
+git+https://github.com/Qiskit-Extensions/circuit-knitting-toolbox.git#egg=circuit-knitting-toolbox[notebook-dependencies,dev,cplex]
+qiskit

@@ -1,0 +1,22 @@
+For workflow:	IBMParallelSimulator12
+	 InstanceId:	80b259f3b67f418589c481e6e2bb7919
+		Total workflow execution time:	779.081 seconds
+		Total funtion exec time(as per critical path):	397.812 seconds
+		Total waiting time(as per critical path):	381.269 seconds
+		Critical Path:	Splitter->Transpiler6->Simulator6->Reconstructor->CollectLogs->
+		Total Cost: 	$ 0.0017352621768798831
+
+
+For each path total execution time and total waiting time
+Path:Splitter->Transpiler0->Simulator0->Reconstructor->CollectLogs->	Total exec time:19.85 sec	Total waiting time:759.231 sec
+Path:Splitter->Transpiler1->Simulator1->Reconstructor->CollectLogs->	Total exec time:373.831 sec	Total waiting time:405.25 sec
+Path:Splitter->Transpiler2->Simulator2->Reconstructor->CollectLogs->	Total exec time:13.662 sec	Total waiting time:765.419 sec
+Path:Splitter->Transpiler3->Simulator3->Reconstructor->CollectLogs->	Total exec time:392.985 sec	Total waiting time:386.096 sec
+Path:Splitter->Transpiler4->Simulator4->Reconstructor->CollectLogs->	Total exec time:375.854 sec	Total waiting time:403.22700000000003 sec
+Path:Splitter->Transpiler5->Simulator5->Reconstructor->CollectLogs->	Total exec time:349.785 sec	Total waiting time:429.296 sec
+Path:Splitter->Transpiler6->Simulator6->Reconstructor->CollectLogs->	Total exec time:397.812 sec	Total waiting time:381.269 sec
+Path:Splitter->Transpiler7->Simulator7->Reconstructor->CollectLogs->	Total exec time:396.688 sec	Total waiting time:382.39300000000003 sec
+Path:Splitter->Transpiler8->Simulator8->Reconstructor->CollectLogs->	Total exec time:346.037 sec	Total waiting time:433.04400000000004 sec
+Path:Splitter->Transpiler9->Simulator9->Reconstructor->CollectLogs->	Total exec time:363.705 sec	Total waiting time:415.37600000000003 sec
+Path:Splitter->Transpiler10->Simulator10->Reconstructor->CollectLogs->	Total exec time:336.223 sec	Total waiting time:442.858 sec
+Path:Splitter->Transpiler11->Simulator11->Reconstructor->CollectLogs->	Total exec time:357.356 sec	Total waiting time:421.725 sec

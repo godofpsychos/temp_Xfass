@@ -1,0 +1,22 @@
+For workflow:	IBMParallelSimulator12
+	 InstanceId:	600788a5786f4dd79ee4e8e2c9eb6726
+		Total workflow execution time:	819.845 seconds
+		Total funtion exec time(as per critical path):	397.906 seconds
+		Total waiting time(as per critical path):	421.939 seconds
+		Critical Path:	Splitter->Transpiler11->Simulator11->Reconstructor->CollectLogs->
+		Total Cost: 	$ 0.0017276795291748044
+
+
+For each path total execution time and total waiting time
+Path:Splitter->Transpiler0->Simulator0->Reconstructor->CollectLogs->	Total exec time:20.828 sec	Total waiting time:799.017 sec
+Path:Splitter->Transpiler1->Simulator1->Reconstructor->CollectLogs->	Total exec time:199.458 sec	Total waiting time:620.3870000000001 sec
+Path:Splitter->Transpiler2->Simulator2->Reconstructor->CollectLogs->	Total exec time:13.714 sec	Total waiting time:806.131 sec
+Path:Splitter->Transpiler3->Simulator3->Reconstructor->CollectLogs->	Total exec time:208.545 sec	Total waiting time:611.3000000000001 sec
+Path:Splitter->Transpiler4->Simulator4->Reconstructor->CollectLogs->	Total exec time:335.751 sec	Total waiting time:484.09400000000005 sec
+Path:Splitter->Transpiler5->Simulator5->Reconstructor->CollectLogs->	Total exec time:371.54 sec	Total waiting time:448.305 sec
+Path:Splitter->Transpiler6->Simulator6->Reconstructor->CollectLogs->	Total exec time:374.341 sec	Total waiting time:445.504 sec
+Path:Splitter->Transpiler7->Simulator7->Reconstructor->CollectLogs->	Total exec time:387.554 sec	Total waiting time:432.29100000000005 sec
+Path:Splitter->Transpiler8->Simulator8->Reconstructor->CollectLogs->	Total exec time:354.453 sec	Total waiting time:465.39200000000005 sec
+Path:Splitter->Transpiler9->Simulator9->Reconstructor->CollectLogs->	Total exec time:368.775 sec	Total waiting time:451.07000000000005 sec
+Path:Splitter->Transpiler10->Simulator10->Reconstructor->CollectLogs->	Total exec time:344.531 sec	Total waiting time:475.314 sec
+Path:Splitter->Transpiler11->Simulator11->Reconstructor->CollectLogs->	Total exec time:397.906 sec	Total waiting time:421.939 sec

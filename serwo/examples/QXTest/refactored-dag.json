@@ -1,0 +1,41 @@
+{
+    "WorkflowName": "QXTestDemo",
+    "Nodes": [
+        {
+            "NodeId": "1",
+            "NodeName": "TaskA",
+            "Path": "examples/QXTest/Invoke",
+            "EntryPoint": "Invoke.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "2",
+            "NodeName": "TaskB",
+            "Path": "examples/QXTest/CheckPoll",
+            "EntryPoint": "CheckPoll.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        },
+        {
+            "NodeId": "253",
+            "NodeName": "CollectLogs",
+            "Path": "/home/tarun/XFaaS/serwo/examples/QXTest/CollectLogs",
+            "EntryPoint": "func.py",
+            "CSP": "NA",
+            "MemoryInMB": 128
+        }
+    ],
+    "Edges": [
+        {
+            "TaskA": [
+                "TaskB"
+            ]
+        },
+        {
+            "TaskB": [
+                "CollectLogs"
+            ]
+        }
+    ]
+}

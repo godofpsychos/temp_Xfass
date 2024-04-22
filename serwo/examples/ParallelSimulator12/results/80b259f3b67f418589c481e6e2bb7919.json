@@ -1,0 +1,71 @@
+{
+    "WorkFlowName": "IBMParallelSimulator12",
+    "InstanceId": "80b259f3b67f418589c481e6e2bb7919",
+    "Total_workflow_exec_time": 779.081,
+    "TotalFuntionExecutionTime": 397.812,
+    "Total_waiting_time": 381.269,
+    "CriticalPath": "Splitter->Transpiler6->Simulator6->Reconstructor->CollectLogs->",
+    "TotalCost": 0.0017352621768798831,
+    "PathResults": [
+        {
+            "Path": "Splitter->Transpiler0->Simulator0->Reconstructor->CollectLogs->",
+            "Total_exec_time": 19.85,
+            "Total waiting time": 759.231
+        },
+        {
+            "Path": "Splitter->Transpiler1->Simulator1->Reconstructor->CollectLogs->",
+            "Total_exec_time": 373.831,
+            "Total waiting time": 405.25
+        },
+        {
+            "Path": "Splitter->Transpiler2->Simulator2->Reconstructor->CollectLogs->",
+            "Total_exec_time": 13.662,
+            "Total waiting time": 765.419
+        },
+        {
+            "Path": "Splitter->Transpiler3->Simulator3->Reconstructor->CollectLogs->",
+            "Total_exec_time": 392.985,
+            "Total waiting time": 386.096
+        },
+        {
+            "Path": "Splitter->Transpiler4->Simulator4->Reconstructor->CollectLogs->",
+            "Total_exec_time": 375.854,
+            "Total waiting time": 403.22700000000003
+        },
+        {
+            "Path": "Splitter->Transpiler5->Simulator5->Reconstructor->CollectLogs->",
+            "Total_exec_time": 349.785,
+            "Total waiting time": 429.296
+        },
+        {
+            "Path": "Splitter->Transpiler6->Simulator6->Reconstructor->CollectLogs->",
+            "Total_exec_time": 397.812,
+            "Total waiting time": 381.269
+        },
+        {
+            "Path": "Splitter->Transpiler7->Simulator7->Reconstructor->CollectLogs->",
+            "Total_exec_time": 396.688,
+            "Total waiting time": 382.39300000000003
+        },
+        {
+            "Path": "Splitter->Transpiler8->Simulator8->Reconstructor->CollectLogs->",
+            "Total_exec_time": 346.037,
+            "Total waiting time": 433.04400000000004
+        },
+        {
+            "Path": "Splitter->Transpiler9->Simulator9->Reconstructor->CollectLogs->",
+            "Total_exec_time": 363.705,
+            "Total waiting time": 415.37600000000003
+        },
+        {
+            "Path": "Splitter->Transpiler10->Simulator10->Reconstructor->CollectLogs->",
+            "Total_exec_time": 336.223,
+            "Total waiting time": 442.858
+        },
+        {
+            "Path": "Splitter->Transpiler11->Simulator11->Reconstructor->CollectLogs->",
+            "Total_exec_time": 357.356,
+            "Total waiting time": 421.725
+        }
+    ]
+}

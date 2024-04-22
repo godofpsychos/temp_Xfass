@@ -1,0 +1,72 @@
+{
+  "WorkflowName": "AWSSerialHardware",
+  "Nodes": 
+  [
+    {
+      "NodeId": "1",
+      "NodeName": "Splitter",
+      "Path": "examples/SerialHardwareAWS/Splitter",
+      "EntryPoint": "Splitter.py",
+      "CSP": "NA",
+      "MemoryInMB": 128
+    },
+    {
+      "NodeId": "2",
+      "NodeName": "Transpiler",
+      "Path": "examples/SerialHardwareAWS/Transpiler",
+      "EntryPoint": "Transpiler.py",
+      "CSP": "NA",
+      "MemoryInMB": 128,
+      "IsAsync": false
+    },
+    {
+      "NodeId": "3",
+      "NodeName": "Submitter",
+      "Path": "examples/SerialHardwareAWS/Submitter",
+      "EntryPoint": "Submitter.py",
+      "CSP": "NA",
+      "MemoryInMB": 128,
+      "IsAsync":true
+    },
+    {
+      "NodeId": "4",
+      "NodeName": "Poller",
+      "Path": "examples/SerialHardwareAWS/Poller",
+      "EntryPoint": "Poller.py",
+      "CSP": "NA",
+      "MemoryInMB": 128
+    }
+    ,
+    {
+      "NodeId": "5",
+      "NodeName": "Reconstructor",
+      "Path": "examples/SerialHardwareAWS/Reconstructor",
+      "EntryPoint": "Reconstructor.py",
+      "CSP": "NA",
+      "MemoryInMB": 128
+    }
+  ],
+  "Edges": [
+    {
+        "Splitter": [
+            "Transpiler"
+        ]
+    },
+    {
+        "Transpiler": [
+            "Submitter"
+        ]
+    },
+    {
+        "Submitter": [
+            "Poller"
+        ]
+    },
+    {
+        "Poller": [
+            "Reconstructor"
+        ]
+    }
+]
+}
+

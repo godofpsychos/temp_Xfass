@@ -1,0 +1,120 @@
+{
+  "WorkflowName": "IBMParallelSimulator3",
+  "Nodes": 
+  [
+    {
+      "NodeId": "1",
+      "NodeName": "Splitter",
+      "Path": "examples/ParallelSimulator12/Splitter",
+      "EntryPoint": "Splitter.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    },
+    {
+      "NodeId": "2",
+      "NodeName": "Transpiler0",
+      "Path": "examples/ParallelSimulator12/Transpiler0",
+      "EntryPoint": "Transpiler.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    },
+    {
+      "NodeId": "3",
+      "NodeName": "Transpiler1",
+      "Path": "examples/ParallelSimulator12/Transpiler1",
+      "EntryPoint": "Transpiler.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    },
+    {
+      "NodeId": "4",
+      "NodeName": "Transpiler2",
+      "Path": "examples/ParallelSimulator12/Transpiler2",
+      "EntryPoint": "Transpiler.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    },
+    {
+      "NodeId": "5",
+      "NodeName": "Simulator0",
+      "Path": "examples/ParallelSimulator12/Simulator",
+      "EntryPoint": "Simulator.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    },
+    {
+      "NodeId": "6",
+      "NodeName": "Simulator1",
+      "Path": "examples/ParallelSimulator12/Simulator",
+      "EntryPoint": "Simulator.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    },
+    {
+      "NodeId": "7",
+      "NodeName": "Simulator2",
+      "Path": "examples/ParallelSimulator12/Simulator",
+      "EntryPoint": "Simulator.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    },
+    {
+      "NodeId": "8",
+      "NodeName": "Reconstructor",
+      "Path": "examples/ParallelSimulator12/Reconstructor",
+      "EntryPoint": "Reconstructor.py",
+      "CSP": "NA",
+      "MemoryInMB": 1536
+    }
+  ],
+  "Edges": [
+    {
+        "Splitter": [
+            "Transpiler0"
+        ]
+    },
+    {
+      "Splitter": [
+          "Transpiler1"
+      ]
+    },
+    {
+      "Splitter": [
+          "Transpiler2"
+      ]
+    },
+    {
+        "Transpiler0": [
+            "Simulator0"
+        ]
+    },
+    {
+      "Transpiler1": [
+        "Simulator1"
+      ]
+    },
+    {
+      "Transpiler2": [
+          "Simulator2"
+      ]
+  },
+    
+    {
+        "Simulator0": [
+            "Reconstructor"
+        ]
+    },
+    {
+        "Simulator1": [
+            "Reconstructor"
+        ]
+    }
+    ,
+    {
+        "Simulator2": [
+            "Reconstructor"
+        ]
+    }
+]
+}
+

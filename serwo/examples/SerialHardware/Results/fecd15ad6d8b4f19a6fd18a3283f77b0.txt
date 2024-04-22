@@ -1,0 +1,11 @@
+For workflow:	IBMSerialHardware
+	 InstanceId:	fecd15ad6d8b4f19a6fd18a3283f77b0
+		Total workflow execution time:	118731.758 seconds
+		Total funtion exec time(as per critical path):	3103.88 seconds
+		Total waiting time(as per critical path):	115627.878 seconds
+		Critical Path:	Splitter->Transpiler->Submitter->Poller->Reconstructor->
+		Total Cost: 	$ 0.00048796728515624997
+
+
+For each path total execution time and total waiting time
+Path:Splitter->Transpiler->Submitter->Poller->Reconstructor->	Total exec time:3103.88 sec	Total waiting time:115627.878 sec

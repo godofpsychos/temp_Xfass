@@ -1,0 +1,16 @@
+{
+    "WorkFlowName": "IBMSerialHardware",
+    "InstanceId": "22d08e68e4054e3ca9ae1716e34b99b3",
+    "Total_workflow_exec_time": 2009.222,
+    "TotalFuntionExecutionTime": 98.544,
+    "Total_waiting_time": 1910.6779999999999,
+    "CriticalPath": "Splitter->Transpiler->Submitter->Poller->Reconstructor->",
+    "TotalCost": 2.9776236267089844e-05,
+    "PathResults": [
+        {
+            "Path": "Splitter->Transpiler->Submitter->Poller->Reconstructor->",
+            "Total_exec_time": 98.544,
+            "Total waiting time": 1910.6779999999999
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "WorkflowName": "IBMDeploy",
+    "Nodes": 
+    [
+      {
+        "NodeId": "1",
+        "NodeName": "Invoke",
+        "Path": "examples/NewQuantumWorkflow/Invoke",
+        "EntryPoint": "Invoke.py",
+        "CSP": "NA",
+        "MemoryInMB": 128
+      },
+      {
+        "NodeId": "2",
+        "NodeName": "Transpile",
+        "Path": "examples/NewQuantumWorkflow/Transpiler",
+        "EntryPoint": "Transpiler.py",
+        "CSP": "NA",
+        "MemoryInMB": 128,
+        "IsAsync": true
+      },
+      {
+        "NodeId": "3",
+        "NodeName": "Submit",
+        "Path": "examples/NewQuantumWorkflow/Submit",
+        "EntryPoint": "Submit.py",
+        "CSP": "NA",
+        "MemoryInMB": 128,
+        "IsAsync":true
+      },
+      {
+        "NodeId": "4",
+        "NodeName": "Poll",
+        "Path": "examples/NewQuantumWorkflow/Poll",
+        "EntryPoint": "Poll.py",
+        "CSP": "NA",
+        "MemoryInMB": 128
+      },
+      {
+        "NodeId": "5",
+        "NodeName": "Reconstruction",
+        "Path": "examples/NewQuantumWorkflow/Reconstruction",
+        "EntryPoint": "Reconstruction.py",
+        "CSP": "NA",
+        "MemoryInMB": 128
+      }
+    ],
+    "Edges": [
+      {
+          "Invoke": [
+              "Transpile"
+          ]
+      },
+      {
+          "Transpile": [
+              "Submit"
+          ]
+      },
+      {
+          "Submit": [
+              "Poll"
+          ]
+      },
+      {
+          "Poll": [
+              "Reconstruction"
+          ]
+      }
+  ]
+}
+  
