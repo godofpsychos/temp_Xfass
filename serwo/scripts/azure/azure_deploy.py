@@ -10,81 +10,72 @@ signal(SIGPIPE,SIG_DFL)
 from time import sleep
 import sys
 import uuid
-user_input_1 = sys.argv[1]
-user_input_2 = sys.argv[2]
 
-#az functionapp create --consumption-plan-location centralindia --runtime python --runtime-version 3.9 --functions-version 4 --name testdeploymentserwo  --os-type linux --storage-account serwoa553 -g serWO
-#func azure functionapp publish testdeploymentserwo
 
-parent_directory = pathlib.Path(__file__).parent.absolute().parent.absolute().parent
-user_json_dir=f"{parent_directory}/{user_input_1}"
-json_path = f'{user_json_dir}/build/workflow/resources/azure_resources.json'
-runtime = 'python'
-functions_version = 4
-runtime_version = 3.9
-os_type = 'linux'
-location = 'centralindia'
+def init_paths(user_workflow_dir, region , part_id,is_netherite):
+    global resources_path, runtime, functions_version, runtime_version, os_type
+    if is_netherite:
+        resources_path = f'{user_workflow_dir}/build/workflow/resources/azure_v2-{region}-{part_id}.json'
+    else:
+        resources_path = f'{user_workflow_dir}/build/workflow/resources/azure-{region}-{part_id}.json'
+    runtime = 'python'
+    functions_version = 4
+    runtime_version = 3.9
+    os_type = 'linux'
+
 
 def get_resources():
-    f = open(json_path,'r')
+    f = open(resources_path, 'r')
     data = json.loads(f.read())
     return data['storage_account'],data['group'],data['app_name'],data['user_dir']
 
-def deploy(storage,group,app,user_dir):
-    print(f'Creating User app: {app}')
-    command = f'az functionapp create --consumption-plan-location {location} --runtime {runtime} --runtime-version {runtime_version} --functions-version {functions_version} --name {app} --os-type {os_type} --storage-account {storage} -g {group}'
+
+def deploy_to_azure(storage, group, app, user_dir, region,is_netherite):
+    # print(f'Creating User app in azure: {app}')
+    command = f'az functionapp create --consumption-plan-location {region} --runtime {runtime} --runtime-version {runtime_version} --functions-version {functions_version} --name {app} --os-type {os_type} --storage-account {storage} -g {group}'
+    print(command)
     stream = os.popen(command)
+    app_create_output = stream.read()
+    # print(app_create_output)
     stream.close()
+    ##TODO: check if function app exists instead of sleep
     sleep(30)
+
+    if is_netherite:
+        ## fetch connection string from resources  file
+        f = open(resources_path, 'r')
+        data = json.loads(f.read())
+        event_hubs_connection_string = data['event_hubs_connection_string']
+        f.close()
+        ## add EventHubsConnection connection string to app config
+        command = f'az functionapp config appsettings set --name {app} --resource-group {group} --settings EventHubsConnection="{event_hubs_connection_string}"'
+        print(command)
+        stream = os.popen(command)
+        app_config_output = stream.read()
+        # print(app_config_output)
+        stream.close()
+
     os.chdir(user_dir)
-    print(f'User app created, deploying {app}')
-    stream = os.popen(f'func azure functionapp publish {app}')
+
+    print(':' * 80,f'User app created, deploying {app}')
+    command = f'func azure functionapp publish {app}'
+    print(command)
+    stream = os.popen(command)
+    app_deploy_output = stream.read()
+    # print(app_deploy_output)
     stream.close()
 
 
-def generate_deployment_logs():
-
-    path = user_json_dir+'/'+user_input_2
-
-    js_left = json.loads(open(path,'r').read())
-
-    lp = []
-
-
-    for nd in js_left['Nodes']:
-        lp.append(nd['NodeId'])
-
-
-    dc = 'azure'
-
-    d = dict()
-    d['wf_id'] = wf_id
-    d['refactored_wf_id'] = refactored_wf_id
-    d["wf_dc_config"] = {
-        'aws' : {"region": "ap-south-1", "csp": "AWS"},
-        'azure' : {"region": "Central India", "csp": "Azure"}
-    }
-    d['wf_deployment_name'] = 'JPDC SMART GRID Azure only'
-
-    d['wf_deployment_id'] = str(uuid.uuid4())
-    d['wf_deployment_time'] = str(datetime.datetime.now())
-
-    a=dict()
-    for nd in js_left['Nodes']:
-        a[nd['NodeId']] = {'dc_config_id' : dc ,"resource_id":'','endpoint':''}
-
-    d['func_deployment_config'] = a
-
-    try:
-        dynPartiQLWrapper = PartiQLWrapper('workflow_deployment_table')
-        dynPartiQLWrapper.put(d)
-    except ClientError as e:
-        print(e)
+def deploy(user_dir , region , part_id,is_netherite):
+    init_paths(user_dir,region,part_id,is_netherite)
+    storage, group, app, user_dir = get_resources()
+    deploy_to_azure(storage,group,app,user_dir,region,is_netherite)
 
 
 if __name__ == '__main__':
-    storage, group, app, user_dir = get_resources()
-    # generate_deployment_logs()
-    deploy(storage,group,app,user_dir)
+    user_dir = sys.argv[1]
+    region = sys.argv[2]
+    part_id = sys.argv[3]
+    deploy(user_dir,region,part_id)
 
 

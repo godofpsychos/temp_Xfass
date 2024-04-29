@@ -1,0 +1,9 @@
+numpy
+<<<<<<< HEAD:serwo/examples/smart-grid-singlecloud-aws/src/resnet_25KB/requirements.txt
+onnxruntime==1.12.0
+pillow
+psutil
+=======
+onnxruntime
+pillow
+>>>>>>> QXFAAS:serwo/examples/ImageProcessAz/rotate/requirements.txt

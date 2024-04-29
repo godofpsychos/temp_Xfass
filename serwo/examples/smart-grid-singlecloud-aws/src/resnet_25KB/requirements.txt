@@ -1,4 +1,0 @@
-numpy
-onnxruntime==1.12.0
-pillow
-psutil
