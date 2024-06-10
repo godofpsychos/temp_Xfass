@@ -19,6 +19,7 @@ import json
 import pathlib
 import argparse
 import shutil
+import boto3
 
 parser = argparse.ArgumentParser(
     prog="ProgramName",
@@ -61,7 +62,8 @@ def randomString(stringLength):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 
-def add_collect_logs(dag_definition_path,user_wf_dir, xfaas_user_dag,region):
+def add_collect_logs(dag_definition_path,user_wf_dir, xfaas_user_dag,region,csp):
+    csp=csp.lower()
     if region == 'us-east-1':
         region = 'eastus'
     elif region == 'ap-southeast-1':
@@ -78,7 +80,8 @@ def add_collect_logs(dag_definition_path,user_wf_dir, xfaas_user_dag,region):
     storage_account_name = f"xfaaslog{region}"
    
     queue_name = randomString(5)
-    
+    # if(csp=='aws'):
+    #     queue_name=queue_name+'.fifo'
     credential = DefaultAzureCredential()
     subscription_id = os.environ["AZURE_SUBSCRIPTION_ID"]
     resource_client = ResourceManagementClient(credential, subscription_id)
@@ -105,7 +108,16 @@ def add_collect_logs(dag_definition_path,user_wf_dir, xfaas_user_dag,region):
 
     try:
         queue_service_client = QueueServiceClient(account_url=f"https://{storage_account_name}.queue.core.windows.net", credential=credential)
-        queue_service_client.create_queue(queue_name)
+        # queue_service_client.create_queue(queue_name)
+        print("::"*80)
+        print("csp=", csp)
+        if csp=='azure':
+            queue_creation_command=f"az storage queue create -n {queue_name} --account-name {storage_account_name}"
+            os.system(queue_creation_command)
+        elif csp=='aws':
+            
+            sqs=boto3.client('sqs')
+            sqs.create_queue(QueueName=queue_name)
     except Exception as e:
         print(e)
 
@@ -127,6 +139,7 @@ def add_collect_logs(dag_definition_path,user_wf_dir, xfaas_user_dag,region):
     
     connection_string_template = 'CONNECTION_STRING'
     queue_name_template = 'QUEUE_NAME'
+    coll_csp="COLL_CSP"
     
     ##open the file and replace the connection string and queue name
     with open(f'{new_collect_logs_dir}/func.py', 'r') as file :
@@ -134,6 +147,7 @@ def add_collect_logs(dag_definition_path,user_wf_dir, xfaas_user_dag,region):
     
     filedata = filedata.replace(connection_string_template, fin_dict['connection_string'])
     filedata = filedata.replace(queue_name_template, fin_dict['queue_name'])
+    filedata = filedata.replace(coll_csp, csp)
 
     with open(f'{new_collect_logs_dir}/func.py', 'w') as file:
         file.write(filedata)
@@ -251,7 +265,7 @@ def run(user_wf_dir, dag_definition_file, benchmark_file, csp,region):
     partition_config = [PartitionPoint("function_name", 2, csp, None, part_id, region)]
 
     wf_id = xfaas_provenance.push_user_dag(dag_definition_path)
-    queue_details = add_collect_logs(dag_definition_path,user_wf_dir,xfaas_user_dag,region)
+    queue_details = add_collect_logs(dag_definition_path,user_wf_dir,xfaas_user_dag,region,csp)
     dag_definition_path = f'{user_wf_dir}/refactored-{dag_definition_file}'
     # add_async_waitXfn(dag_definition_path,user_wf_dir,dag_definition_path)  # print("Added Async update fn ality to dag.json")
     refactored_wf_id = xfaas_provenance.push_refactored_workflow("refactored-dag.json", user_wf_dir, wf_id,csp)
